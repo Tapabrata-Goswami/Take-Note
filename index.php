@@ -23,10 +23,18 @@ $database_connection = mysqli_connect($servername, $username, $password, $databa
             $('#myTable').DataTable();
         });
     </script>
+    <style>
+    <?php
+    include ('style.css');
+    ?>
+    </style>
     <title>Take Note</title>
 </head>
 
 <body>
+
+<!-- Navbar Start-->
+
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">Navbar</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data- target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -58,6 +66,8 @@ $database_connection = mysqli_connect($servername, $username, $password, $databa
             </ul>
         </div>
     </nav>
+
+<!-- NavBar End -->
 
     <?php
     if (!$database_connection) {
@@ -120,7 +130,7 @@ $database_connection = mysqli_connect($servername, $username, $password, $databa
                         <th scope="row">' . $note_count . '</th>
                         <td>' . $notes_are['title'] . '</td>
                         <td>' . $notes_are['note'] . '</td>
-                        <td>' . $notes_are['time-date'] . '</td>
+                        <td><button type="button" class="btn btn-primary">Edit</button> <button type="button" class="btn btn-danger delete">Delete</button>
                         </tr>';
                         $note_count = $note_count + 1;
                     }
@@ -129,6 +139,10 @@ $database_connection = mysqli_connect($servername, $username, $password, $databa
             </tbody>
         </table>
     </div>
-</body>
 
+</body>
+    <script>
+        var delete_note = document.getElementsByClassName('delete');
+        console.log(delete_note);
+    </script>
 </html>
